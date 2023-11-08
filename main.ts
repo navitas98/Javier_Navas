@@ -3,6 +3,7 @@ import mongoose from "npm:mongoose@7.6.3";
 
 import updatePerson from "./resolvers/updatePerson.ts";
 import deletePerson from "./resolvers/deletePersona.ts";
+import cors from "cors"
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 import addPersona from "./resolvers/addPersona.ts";
@@ -19,6 +20,7 @@ if (!MONGO_URL) {
 }
 await mongoose.connect(MONGO_URL);
 const app = express();
+app.use(cors())
 app.use(express.json());
 app
 //Persona
